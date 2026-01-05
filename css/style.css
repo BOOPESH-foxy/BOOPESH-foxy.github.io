@@ -318,7 +318,7 @@ hr.separator {
 }
 
 .home .bg {
-  background-image: url(../img/2.jpeg);
+  background-image: url(../img/img-mobile.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -537,11 +537,13 @@ hr.separator {
   background-color: #111;
 }
 
+
 /*** Portfolio ***/
 .portfolio .main-content {
   padding-bottom: 60px;
   margin-top: -15px;
 }
+
 
 /* Grid */
 
@@ -1437,3 +1439,152 @@ hr.separator {
   }
 }
 
+
+.preloader {
+    background-color: #111 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.preloader .loader {
+    width: 250px !important;
+    height: 4px !important;
+    border: none !important; /* This removes the circle line */
+    border-radius: 10px !important;
+    background: #252525 !important;
+    animation: none !important; /* This stops the spinning */
+    overflow: visible !important;
+}
+
+.preloader .loader::before {
+    content: "" !important;
+    position: absolute !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: #00ffcc !important; /* Your Electric Cyan */
+    box-shadow: 0 0 15px #00ffcc !important;
+    animation: neon-bar 2s infinite ease-in-out !important;
+}
+
+@keyframes neon-bar {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
+}
+
+
+/* --- Linear Skill Bars --- */
+.skill-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #252525;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background-color: #00ffcc; /* Your Electric Cyan */
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
+
+.float-right {
+    float: right;
+    color: #00ffcc;
+    font-weight: 600;
+}
+
+
+/* --- Professional Timeline Alignment Fix --- */
+.resume-box ul {
+    position: relative;
+    padding: 0;
+    list-style: none;
+}
+
+.resume-box li {
+    position: relative;
+    padding: 0 20px 20px 70px; /* Increased left padding for a cleaner gap */
+    margin: 0;
+    border-left: 1px solid #333; /* The vertical timeline line */
+}
+
+/* Fixes the icon position on the line */
+.resume-box .icon {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -20px; /* Perfectly centers the circle on the 1px line */
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #00ffcc; /* Your Electric Cyan theme */
+    z-index: 1;
+}
+
+/* Ensures all descriptions have the same text flow */
+.resume-box p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 10px;
+    color: #ccc;
+    text-align: justify; /* Optional: keeps the right edge clean */
+}
+
+.resume-box .time {
+    background-color: #252525;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* Custom Spacing Fixes */
+.skill-bar-container {
+    margin-bottom: 25px; /* Space between the bars themselves */
+}
+
+.resume-box ul li {
+    margin-bottom: 40px !important; /* Vertical space between timeline items */
+    padding-bottom: 0;
+}
+
+.resume-box ul li:last-child {
+    margin-bottom: 0 !important;
+}
+
+hr.separator {
+    border-top: 1px solid #252525;
+    margin: 80px auto !important; /* Creates a massive, clean break */
+    max-width: 60%;
+}
+
+.float-right {
+    float: right;
+}
+
+
+/* --- Global Bottom Spacing Fix --- */
+.about .main-content {
+    padding-bottom: 100px !important; /* Forces a 100px gap at the bottom */
+}
+
+/* Fixes spacing for the resume boxes specifically */
+.resume-box {
+    margin-bottom: 30px;
+}
+
+/* Ensures the container has space on mobile */
+@media (max-width: 991px) {
+    .main-content {
+        padding-bottom: 80px !important;
+    }
+}
