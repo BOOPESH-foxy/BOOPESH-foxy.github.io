@@ -1588,3 +1588,21 @@ hr.separator {
         padding-bottom: 80px !important;
     }
 }
+
+/* --- Mobile Circular Profile Image Fix --- */
+@media (max-width: 576px) {
+    .main-123 {
+        width: 150px !important; /* Adjust size as needed */
+        height: 150px !important;
+        object-fit: cover !important; /* Prevents stretching */
+        border-radius: 50% !important; /* This makes it circular */
+        border: 4px solid #00ffcc; /* Optional: adds a cyan ring around it */
+        margin: 0 auto 20px auto !important; /* Centers the image */
+        display: block !important;
+    }
+    
+    /* Center the bio text on mobile if the image is centered */
+    .about .main-content p {
+        text-align: center;
+    }
+}
