@@ -831,7 +831,7 @@ hr.separator {
 .contact .custom-span-contact {
   font-weight: 600;
   padding-left: 50px;
-  line-height: 21px;
+  line-height: 20px;
   padding-top: 5px;
 }
 
@@ -1503,14 +1503,37 @@ hr.separator {
     border-radius: 10px;
     position: relative;
     
-    /* Animation 1: The Initial Fill */
-    transition: width 2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    /* Changed: This triggers the 'growth' on page load */
+    /* It runs 'fill-reveal' once, and 'shimmer/pulse' forever */
+    animation: 
+        fill-reveal 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, 
+        shimmer 3s infinite linear, 
+        pulse 2s infinite ease-in-out;
     
-    /* Animation 2: The Continuous Shimmer */
-    animation: shimmer 3s infinite linear, pulse 2s infinite ease-in-out;
-    
-    /* The Neon Glow */
+    /* Force the start at 0 so the animation is visible */
+    transform-origin: left;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), 0 0 5px rgba(0, 255, 204, 0.8);
+}
+
+/* NEW: This is the keyframe that makes the bar grow on reload */
+@keyframes fill-reveal {
+    0% {
+        transform: scaleX(0); /* Start empty */
+    }
+    100% {
+        transform: scaleX(1); /* Fill to the width defined in your HTML style tag */
+    }
+}
+
+/* Keep your existing shimmer, pulse, and fadeIn animations below */
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 204, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 204, 0.9); }
 }
 
 /* The Glowing Tip of the bar */
