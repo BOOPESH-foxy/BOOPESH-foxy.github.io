@@ -318,16 +318,25 @@ hr.separator {
 }
 
 .home .bg {
-  background-image: url(../img/img-mobile.jpeg);
+  background-image: url(../img/123.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top;
-  height: calc(100vh - 80px);
+  background-position: center; /* Changed from top to center for better framing */
+  
+  /* To make a circle, width and height must be the same */
+  height: 500px; 
+  width: 500px;
+  border-radius: 50% !important; /* This forces the circular shape */
+  
+  /* Positioning */
+  position: absolute;
+  left: 80px; /* Adjust this to move it further from the left edge */
+  top: 50%;
+  transform: translateY(-50%); /* Centers it vertically */
+  
   z-index: 111;
-  border-radius: 30px;
-  left: 40px;
-  top: 40px;
-  box-shadow: 0 0 7px rgba(0,0,0,.9);
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.4); /* Neon Cyan Glow */
+  border: 4px solid #00ffcc; /* Optional: adds a ring around the circle */
 }
 
 .home .container-home {
@@ -1476,27 +1485,71 @@ hr.separator {
 
 
 /* --- Linear Skill Bars --- */
+/* --- Neon Skill Bar Animations --- */
 .skill-bar-container {
     width: 100%;
-    height: 8px;
-    background-color: #252525;
+    height: 10px;
+    background-color: #1a1a1a; /* Deeper black for more contrast */
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    border: 1px solid #252525;
 }
 
 .skill-bar-fill {
     height: 100%;
-    background-color: #00ffcc; /* Your Electric Cyan */
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    background: linear-gradient(90deg, #00ffcc, #00ccaa, #00ffcc);
+    background-size: 200% 100%;
     border-radius: 10px;
-    transition: width 1.5s ease-in-out;
+    position: relative;
+    
+    /* Animation 1: The Initial Fill */
+    transition: width 2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    
+    /* Animation 2: The Continuous Shimmer */
+    animation: shimmer 3s infinite linear, pulse 2s infinite ease-in-out;
+    
+    /* The Neon Glow */
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.6), 0 0 5px rgba(0, 255, 204, 0.8);
 }
 
+/* The Glowing Tip of the bar */
+.skill-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 10px;
+    background: #fff;
+    filter: blur(4px);
+    opacity: 0.8;
+}
+
+/* Keyframes for the Shimmer (Moving Light) */
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Keyframes for the Pulse (Breathing Glow) */
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 204, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 204, 0.9); }
+}
+
+
 .float-right {
-    float: right;
+    font-family: 'Poppins', sans-serif;
     color: #00ffcc;
     font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 
@@ -1606,3 +1659,4 @@ img.main-123 {
     text-align: center !important;
     padding-bottom: 20px;
 }
+
